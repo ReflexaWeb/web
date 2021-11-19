@@ -1,41 +1,56 @@
-import React from "react";
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useRouteMatch } from 'react-router-dom';
 
-//import { api } from '../../services/api'
+import { api } from '../../services/api'
 
 import { Section, Container } from './styles'
 
-interface Params {
+interface codeParams {
   code: string;
+}
+
+interface Product {
+  id: string;
   name: string;
+  code: string;
+  product_url: string;
 }
 
 export function DetailsProducts() {
-  const { code, name } = useParams<Params>();
-  //const [productDetail, setProductDetail] = useState({});
+  const [productDetail, setProductDetail] = useState<Product | null>(null);
 
-  /*useEffect(() => {
+  const { params } = useRouteMatch<codeParams | null>();
+
+
+  useEffect(() => {
     async function detailProduct() {
-      const response = await api.get(`products/${code}`);
+      const response = await api.get(`products/${params?.code}`);
       setProductDetail(response.data);
       //console.log(response.data);
     }
     detailProduct();
-  })*/
+  })
 
 
   return (
     <>
-      <Section>
-        <Container>
-          <div className="imgDetailProduct">
-
-          </div>
-          <div className="descDetailProduct">
-            <h2> {name} </h2>
-          </div>
-        </Container>
-      </Section>
+      {productDetail && (
+        <Section>
+          <Container>
+            <div className="imgDetailProduct">
+              <img
+                src={productDetail.product_url}
+                alt={productDetail.name}
+              />
+            </div>
+            <div className="descDetailProduct">
+              <h2>{productDetail.name}</h2>
+              <span>Código: {productDetail.code}</span>
+              <a href=""> Solicite um orçamento</a>
+            </div>
+          </Container>
+        </Section>
+      )}
     </>
   )
 }
