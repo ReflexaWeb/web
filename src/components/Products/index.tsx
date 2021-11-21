@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { api } from '../../services/api'
 
+import Loading from '../../components/FullLoader';
+
 import { Section, Container, Title, Produtos } from "./styles";
 
 interface Product {
@@ -13,20 +15,21 @@ interface Product {
 }
 
 export function Products() {
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     async function loadProducts() {
       const response = await api.get('products');
-
       setProducts(response.data);
-
+      setLoading(false);
     }
     loadProducts();
-  })
+  }, []);
   return (
     <Section>
       <Container>
+        <Loading show={loading} />
         <Title>
           <h2>Catálogo de produtos</h2>
         </Title>
