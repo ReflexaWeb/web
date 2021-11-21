@@ -35,12 +35,17 @@ export const Container = styled.div`
       font-size: 44px;
       font-weight: 600;
       line-height: 44px;
+      margin-bottom: 45px;
     }
 
     span{
       display: block;
       font-size: 18px;
-      margin-top: 35px;
+      margin-top: 15px;
+
+      strong{
+        font-weight: 600;
+      }
     }
 
     a{

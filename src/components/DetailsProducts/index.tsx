@@ -14,6 +14,9 @@ interface Product {
   name: string;
   code: string;
   product_url: string;
+  unity: string;
+  reference: string;
+  fraction: string;
 }
 
 export function DetailsProducts() {
@@ -26,7 +29,6 @@ export function DetailsProducts() {
     async function detailProduct() {
       const response = await api.get(`products/${params?.code}`);
       setProductDetail(response.data);
-      //console.log(response.data);
     }
     detailProduct();
   })
@@ -45,7 +47,9 @@ export function DetailsProducts() {
             </div>
             <div className="descDetailProduct">
               <h2>{productDetail.name}</h2>
-              <span>Código: {productDetail.code}</span>
+              <span><strong>Código:</strong> {productDetail.code}</span>
+              <span><strong>Unidades:</strong> {productDetail.unity}</span>
+              <span><strong>Referência:</strong> {productDetail.reference}</span>
               <a href="https://api.whatsapp.com/send?phone=554199229316&text=Converse%20com%20a%20Reflexa%20Embalagens"> Solicite um orçamento</a>
             </div>
           </Container>
