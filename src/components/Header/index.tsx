@@ -19,19 +19,29 @@ interface Product {
 
 export function Header() {
   const [newProd, setNewProd] = useState('');
+  const [inputError, setInputError] = useState('');
+
   const [products, setProducts] = useState<Product[]>([]);
 
-  async function handleSearchProd(event: FormEvent<HTMLFormElement>) {
+  async function handleSearchProd(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
-    //console.log(newProd)
-    const response = await api.get(`products/?active=1${newProd}`);
-    //console.log(response.data);
-    const product = response.data;
 
-    setProducts([...products, product]);
-    setNewProd('');
+    if (!newProd) {
+      setInputError('Digite o nome do produto que busca');
+      return;
+    }
 
+    try {
+      const response = await api.get<Product>(`products/?active=1&name=${newProd}`);
+      console.log(response);
+      const product = response.data;
 
+      setProducts([...products, product]);
+      setNewProd('');
+      setInputError('');
+    } catch (err) {
+      setInputError('Erro na busca por esse produto');
+    }
   }
 
   return (
@@ -42,10 +52,11 @@ export function Header() {
           <input
             value={newProd}
             onChange={(e) => setNewProd(e.target.value)}
-            placeholder="digite a busca pelo código do produto, são mais de 8 mil produtos"
+            placeholder="digite sua busca, são mais de 8 mil produtos"
           />
           <button type="submit">Buscar</button>
         </Form>
+
         <Redes>
           <img src={faceImg} alt="Facebbok" />
           <img src={instaImg} alt="Instagram" />
