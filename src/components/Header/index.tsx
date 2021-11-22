@@ -11,6 +11,7 @@ import { Topo, Form, Redes, Barra } from './styles'
 
 interface Product {
   id: string;
+  active: boolean;
   name: string;
   product_url: string;
   code: number;
@@ -23,13 +24,13 @@ export function Header() {
   async function handleSearchProd(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     //console.log(newProd)
-    const response = await api.get(`products/${newProd}`);
-
+    const response = await api.get(`products/?active=1${newProd}`);
+    //console.log(response.data);
     const product = response.data;
 
     setProducts([...products, product]);
     setNewProd('');
-    //console.log(response.data);
+
 
   }
 

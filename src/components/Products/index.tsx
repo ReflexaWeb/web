@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, SelectHTMLAttributes } from "react";
 import { Link } from 'react-router-dom';
 
 import { api } from '../../services/api'
@@ -14,9 +14,19 @@ interface Product {
   code: number;
 }
 
+interface GroupSelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+  id: string;
+  name: string;
+  code: string;
+  value: string;
+  label: string;
+}
+
 export function Products() {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
+  const [selectedGroup, setSelectedGroup] = useState<GroupSelectProps[]>([]);
+
 
   useEffect(() => {
     async function loadProducts() {
@@ -26,6 +36,17 @@ export function Products() {
     }
     loadProducts();
   }, []);
+
+  async function handleLoadGroup() {
+    const response = await api.get('groups');
+
+    const groupsSelect = response.data;
+    setSelectedGroup(groupsSelect);
+  }
+  useEffect(() => {
+    handleLoadGroup();
+  }, []);
+
   return (
     <Section>
       <Container>
@@ -33,6 +54,16 @@ export function Products() {
         <Title>
           <h2>Catálogo de produtos</h2>
         </Title>
+      </Container>
+      <Container>
+        <select>
+          <option value="">Filtre por categoria</option>
+          {selectedGroup.map(group => (
+            <option key={group.id}>
+              {group.name}
+            </option>
+          ))}
+        </select>
       </Container>
       <Container>
         <Produtos>

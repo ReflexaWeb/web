@@ -10,6 +10,13 @@ export const Container = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 0;
+
+  select{
+    border-radius: 5px;
+    background-color: #0063b4;
+    width: 216px;
+    height: 30px;
+  }
 `
 
 export const Title = styled.div`
