@@ -19,29 +19,20 @@ interface Product {
 
 export function Header() {
   const [newProd, setNewProd] = useState('');
-  const [inputError, setInputError] = useState('');
+  //const [inputError, setInputError] = useState('');
 
   const [products, setProducts] = useState<Product[]>([]);
 
   async function handleSearchProd(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
 
-    if (!newProd) {
-      setInputError('Digite o nome do produto que busca');
-      return;
-    }
 
-    try {
-      const response = await api.get<Product>(`products/?active=1&name=${newProd}`);
-      console.log(response);
-      const product = response.data;
+    const response = await api.get<Product>(`products/?active=1&name=${newProd}`);
+    console.log(response);
+    const product = response.data;
 
-      setProducts([...products, product]);
-      setNewProd('');
-      setInputError('');
-    } catch (err) {
-      setInputError('Erro na busca por esse produto');
-    }
+    setProducts([...products, product]);
+    setNewProd('');
   }
 
   return (
