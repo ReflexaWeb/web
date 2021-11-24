@@ -1,59 +1,41 @@
-import React, { useState, FormEvent } from "react";
-
-import { api } from "../../services/api";
+import React, { useState, FormEvent, useContext } from "react";
 
 import logoImg from '../../assets/images/logo-reflexa.png'
 import faceImg from '../../assets/images/facebook.png'
 import instaImg from '../../assets/images/instagram.png'
 
 import { Topo, Form, Redes, Barra } from './styles'
-
-
-interface Product {
-  id: string;
-  active: boolean;
-  name: string;
-  product_url: string;
-  code: number;
-}
+import ApplicationContext from "../../context/application";
 
 export function Header() {
-  const [newProd, setNewProd] = useState('');
+  const { search, handleSearch } = useContext(ApplicationContext);
+  const [inputSearch, handleInputSearch] = useState(search as string);
   //const [inputError, setInputError] = useState('');
 
-  const [products, setProducts] = useState<Product[]>([]);
-
-  async function handleSearchProd(event: FormEvent<HTMLFormElement>): Promise<void> {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
-
-    const response = await api.get<Product>(`products/?active=1&name=${newProd}`);
-    console.log(response);
-    const product = response.data;
-
-    setProducts([...products, product]);
-    setNewProd('');
-  }
+    handleSearch(inputSearch);
+  };
 
   return (
     <>
       <Topo>
         <img src={logoImg} alt="Reflexa Comercial de Manufaturados" />
-        <Form onSubmit={handleSearchProd}>
+        <Form onSubmit={handleSubmit}>
           <input
-            value={newProd}
-            onChange={(e) => setNewProd(e.target.value)}
+            value={inputSearch}
+            onChange={(e) => handleInputSearch(e.target.value)}
             placeholder="digite sua busca, são mais de 8 mil produtos"
           />
           <button type="submit">Buscar</button>
         </Form>
 
         <Redes>
-          <img src={faceImg} alt="Facebbok" />
+          <img src={faceImg} alt="Facebook" />
           <img src={instaImg} alt="Instagram" />
         </Redes>
       </Topo>
-      <Barra></Barra>
+      <Barra />
     </>
   )
 }
