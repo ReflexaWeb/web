@@ -25,8 +25,9 @@ interface GroupSelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 export function Products() {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedGroup, setSelectedGroup] = useState<GroupSelectProps[]>([]);
 
+  const [selectedGroup, setSelectedGroup] = useState<GroupSelectProps[]>([]);
+  const [groupSelectValue, setGroupSelectValue] = useState("");
 
   useEffect(() => {
     async function loadProducts() {
@@ -47,6 +48,11 @@ export function Products() {
     handleLoadGroup();
   }, []);
 
+  const changeGroup = (newGroup: string): void => {
+    //console.log(newGroup);
+    setGroupSelectValue(newGroup);
+  }
+
   return (
     <Section>
       <Container>
@@ -56,10 +62,16 @@ export function Products() {
         </Title>
       </Container>
       <Container>
-        <select>
-          <option value="">Filtre por categoria</option>
+        <select
+          onChange={(event) => changeGroup(event.target.value)}
+          value={groupSelectValue}
+        >
+          <option value="">Filtre por Grupos</option>
           {selectedGroup.map(group => (
-            <option key={group.id}>
+            <option
+              key={group.id}
+              value={group.code}
+            >
               {group.name}
             </option>
           ))}
