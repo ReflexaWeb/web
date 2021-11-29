@@ -26,6 +26,7 @@ interface IAction {
 
 interface IApplicationState {
     search?: string;
+    page: number;
     group: string;
     products: IProduct[];
     groups: IGroup[];
@@ -41,6 +42,7 @@ interface IApplicationContext extends IApplicationState {
 const ApplicationContext = React.createContext<IApplicationContext>({
     search: '',
     group: '',
+    page: 0,
     products: [],
     groups: [],
     loadingProducts: false,
@@ -86,6 +88,7 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
     const [state, dispatch] = React.useReducer(applicationReducer, {
         search: '',
         group: '',
+        page: 0,
         products: [],
         groups: [],
         loadingProducts: false,
@@ -127,8 +130,7 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
             params: {
                 active: 1,
                 name: state.search,
-                page: 1,
-                per_page: 15
+                page: state.page,
             },
         });
 
@@ -141,7 +143,7 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
             type: 'SET_LOADING_PRODUCTS',
             payload: false,
         });
-    }, [dispatch, state.search]);
+    }, [dispatch, state.search, state.page]);
 
     return (
         <ApplicationContext.Provider
