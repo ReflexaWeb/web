@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {api} from '../services/api'
+import { api } from '../services/api'
 
 interface IProduct {
     id: string;
@@ -82,7 +82,7 @@ const applicationReducer = (state: IApplicationState, action: IAction) => {
     }
 };
 
-const ApplicationProvider: React.FC = ({children}: any) => {
+const ApplicationProvider: React.FC = ({ children }: any) => {
     const [state, dispatch] = React.useReducer(applicationReducer, {
         search: '',
         group: '',
@@ -127,12 +127,14 @@ const ApplicationProvider: React.FC = ({children}: any) => {
             params: {
                 active: 1,
                 name: state.search,
+                page: 1,
+                per_page: 15
             },
         });
 
         dispatch({
             type: 'SET_PRODUCTS',
-            payload: response.data,
+            payload: response.data.data,
         });
 
         dispatch({
@@ -156,5 +158,5 @@ const ApplicationProvider: React.FC = ({children}: any) => {
     );
 };
 
-export {ApplicationProvider};
+export { ApplicationProvider };
 export default ApplicationContext;

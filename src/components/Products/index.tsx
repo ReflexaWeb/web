@@ -1,12 +1,18 @@
-import React, {useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from 'react-router-dom';
 
 import Loading from '../../components/FullLoader';
+import { Pagination } from "../../components/Pagination";
+
 import ApplicationContext from "../../context/application";
 
 import { Section, Container, Title, Produtos } from "./styles";
 
 export function Products() {
+  const [page, setPage] = useState(1);
+  const totalPages = 15;
+  const handlePages = (updatePage: number) => setPage(updatePage);
+
   const { products, groups, group, fetchProducts, handleGroup, loadingProducts } = useContext(ApplicationContext);
 
   useEffect(() => {
@@ -50,6 +56,11 @@ export function Products() {
           ))}
         </Produtos>
       </Container>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        handlePagination={handlePages}
+      />
     </Section>
   )
 }

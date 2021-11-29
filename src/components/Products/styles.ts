@@ -13,9 +13,13 @@ export const Container = styled.div`
 
   select{
     border-radius: 5px;
+    border:none;
     background-color: #0063b4;
     width: 216px;
-    height: 30px;
+    height: 40px;
+    color:#fff;
+    font-size: 18px;
+    padding: 10px;
   }
 `
 
