@@ -30,4 +30,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "."
           target: "/usr/share/nginx/html/reflexa.com.br"
-          script: pm2 restart api
+          script: pm2 restart web
