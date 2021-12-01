@@ -17,9 +17,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12.x
-          
-      - name: Install dependencies
-        run: yarn
         
       - name: Build app
         run: yarn build
@@ -31,6 +28,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
-          source: "., !node_modules"
+          source: "."
           target: "/usr/share/nginx/html/reflexa.com.br"
-           script: pm2 restart web
+           script: pm2 restart api
