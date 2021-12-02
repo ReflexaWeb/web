@@ -27,6 +27,8 @@ interface IAction {
 interface IApplicationState {
     search?: string;
     page: number;
+    totalPages: number;
+    perPage: number;
     group: string;
     products: IProduct[];
     groups: IGroup[];
@@ -37,18 +39,23 @@ interface IApplicationContext extends IApplicationState {
     handleSearch: (search: string) => void;
     fetchProducts: () => Promise<void>;
     handleGroup: (group: string) => void;
+    handlePage: (page: number) => void;
 }
 
 const ApplicationContext = React.createContext<IApplicationContext>({
     search: '',
     group: '',
     page: 0,
+    perPage: 0,
+    totalPages: 0,
     products: [],
     groups: [],
     loadingProducts: false,
     handleSearch: () => {
     },
     handleGroup: () => {
+    },
+    handlePage: () => {
     },
     fetchProducts: () => Promise.resolve(),
 });
@@ -63,7 +70,8 @@ const applicationReducer = (state: IApplicationState, action: IAction) => {
         case 'SET_PRODUCTS':
             return {
                 ...state,
-                products: action.payload,
+                products: action.payload.data,
+                totalPages: action.payload.last_page,
             };
         case 'SET_GROUPS':
             return {
@@ -74,6 +82,11 @@ const applicationReducer = (state: IApplicationState, action: IAction) => {
             return {
                 ...state,
                 group: action.payload,
+            };
+        case 'SET_PAGE':
+            return {
+                ...state,
+                page: action.payload,
             };
         case 'SET_LOADING_PRODUCTS':
             return {
@@ -88,7 +101,9 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
     const [state, dispatch] = React.useReducer(applicationReducer, {
         search: '',
         group: '',
-        page: 0,
+        page: 1,
+        perPage: 5,
+        totalPages: 1,
         products: [],
         groups: [],
         loadingProducts: false,
@@ -105,6 +120,13 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
         dispatch({
             type: 'SET_GROUP',
             payload: group,
+        });
+    };
+
+    const handlePage = (page: number) => {
+        dispatch({
+            type: 'SET_PAGE',
+            payload: page,
         });
     };
 
@@ -131,19 +153,20 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
                 active: 1,
                 name: state.search,
                 page: state.page,
+                per_page: state.perPage,
             },
         });
 
         dispatch({
             type: 'SET_PRODUCTS',
-            payload: response.data.data,
+            payload: response.data,
         });
 
         dispatch({
             type: 'SET_LOADING_PRODUCTS',
             payload: false,
         });
-    }, [dispatch, state.search, state.page]);
+    }, [dispatch, state.search, state.page, state.perPage]);
 
     return (
         <ApplicationContext.Provider
@@ -152,7 +175,8 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
                 products: state.group ? state.products.filter((product: IProduct) => product.group_code === state.group) : state.products,
                 handleSearch,
                 handleGroup,
-                fetchProducts
+                fetchProducts,
+                handlePage
             }}
         >
             {children}

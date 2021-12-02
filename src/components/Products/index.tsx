@@ -1,19 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from 'react-router-dom';
 
 import Loading from '../../components/FullLoader';
-import { Pagination } from "../../components/Pagination";
+import { Pagination } from "../Pagination";
 
 import ApplicationContext from "../../context/application";
 
 import { Section, Container, Title, Produtos } from "./styles";
 
 export function Products() {
-  const [page, setPage] = useState(1);
-  const totalPages = 15;
-  const handlePages = (updatePage: number) => setPage(updatePage);
-
-  const { products, groups, group, fetchProducts, handleGroup, loadingProducts } = useContext(ApplicationContext);
+  const { products, groups, group, fetchProducts, handleGroup, loadingProducts, page, totalPages, handlePage } = useContext(ApplicationContext);
 
   useEffect(() => {
     fetchProducts();
@@ -59,7 +55,7 @@ export function Products() {
       <Pagination
         page={page}
         totalPages={totalPages}
-        handlePagination={handlePages}
+        handlePagination={handlePage}
       />
     </Section>
   )
