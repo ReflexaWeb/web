@@ -82,7 +82,7 @@ export const PaginationComponent: React.FC<Props> = ({
           </button>
         )}
         {page < totalPages - 2 && <div className={styles.separator}>...</div>}
-        <button
+        {page !== totalPages && <button
           onClick={() => handlePagination(totalPages)}
           type="button"
           className={classNames(styles.pageItem, {
@@ -90,7 +90,7 @@ export const PaginationComponent: React.FC<Props> = ({
           })}
         >
           {totalPages}
-        </button>
+        </button>}
         {page !== totalPages && (
           <button
             onClick={() => handlePagination(page + 1)}
