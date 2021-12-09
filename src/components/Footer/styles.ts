@@ -18,4 +18,14 @@ export const Rodape = styled.footer`
     line-height: 24px;
   }
 
+  @media(max-width: 600px) {
+      flex-direction:column;
+      padding: 0 20px;
+      p{
+        font-size:13px;
+        line-height:18px;
+        text-align:center;
+      }
+  }
+
 `

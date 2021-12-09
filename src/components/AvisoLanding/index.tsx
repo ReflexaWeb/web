@@ -1,12 +1,12 @@
 import React from "react";
-import { BsWhatsapp, BsPhone } from "react-icons/bs";
+import { BsWhatsapp, BsPhone, BsFillPinMapFill } from "react-icons/bs";
 
 
 import aboutImg from '../../assets/images/areflexa.png'
 import faceImg from '../../assets/images/facebook.png'
 import instaImg from '../../assets/images/instagram.png'
 
-import { Section, Container, About, Title, Subtitle, Redes, Text, Telefones, AboutImg } from './styles'
+import { Section, Container, About, Title, Subtitle, Redes, Text, Telefones, Endereco, AboutImg } from './styles'
 
 export function AvisoLanding() {
   return (
@@ -38,6 +38,12 @@ export function AvisoLanding() {
                 <BsWhatsapp /> (41) 99673-9627
               </a>
             </Telefones>
+            <Endereco>
+              <p><span>Endereço:</span> R. José Casagrande, 42 - Vista Alegre, Curitiba - PR</p>
+              <a href="https://www.google.com/maps/place/Reflexa+Embalagens/@-25.4151012,-49.3010911,15z/data=!4m5!3m4!1s0x0:0x9eae8d4d6df6e7c8!8m2!3d-25.4151013!4d-49.3010913">
+                <BsFillPinMapFill /> Como chegar
+              </a>
+            </Endereco>
           </About>
           <AboutImg>
             <img src={aboutImg} alt="A Reflexa" />

@@ -9,10 +9,20 @@ export const Container = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 0;
+
+  @media(max-width: 600px) {
+    flex-direction: column;
+    max-width:100%;
+    padding: 0 20px;
+  }
 `
 
 export const About = styled.div`
   padding: 100px 0;
+
+  @media(max-width: 600px) {
+    padding: 50px 0;
+  }
 `
 
 export const Title = styled.h1`
@@ -38,6 +48,10 @@ export const Subtitle = styled.h2`
   font-size: 26px;
   font-weight: 600;
   margin-top: 30px;
+
+  @media(max-width: 600px) {
+      font-size:25px;
+  }
 `
 export const Text = styled.p`
   font-size: 16px;
@@ -68,7 +82,38 @@ export const Telefones = styled.div`
   }
 `
 
+export const Endereco = styled.div`
+  display: block;
+  margin-top: 20px;
+
+  p{
+    span{
+      font-weight:bold;
+    }
+  }
+
+  a{
+    color:#505050;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 25px;
+    text-decoration:none;
+  }
+`
+
 export const AboutImg = styled.div`
   display: flex;
   align-items: center;
+
+  @media(max-width: 600px) {
+    flex-direction:column;
+    padding-bottom:50px;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit:cover;
+    }
+  }
 `
