@@ -41,5 +41,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           script: | 
-            cp -r ~/app/web/build /usr/share/nginx/html/reflexa.com.br
+            sudo cp -r ~/app/web/build /usr/share/nginx/html/reflexa.com.br
             pm2 restart web
