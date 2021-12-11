@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Routes from './routes';
 
 import GlobalStyle from './assets/styles/global'
-import {ApplicationProvider} from "./context/application";
+import { ApplicationProvider } from "./context/application";
 
 function App() {
   return (
