@@ -30,6 +30,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           source: "., !node_modules"
           target: "~/app/web"
 
@@ -40,6 +41,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             sudo rm -rf /usr/share/nginx/html/reflexa.com.br/*
             sudo cp -r ~/app/web/build/* /usr/share/nginx/html/reflexa.com.br
