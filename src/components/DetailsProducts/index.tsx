@@ -50,7 +50,7 @@ export function DetailsProducts() {
               <span><strong>Código:</strong> {productDetail.code}</span>
               <span><strong>Unidades:</strong> {productDetail.unity}</span>
               <span><strong>Referência:</strong> {productDetail.reference}</span>
-              <a href="https://api.whatsapp.com/send?phone=554199229316&text=Converse%20com%20a%20Reflexa%20Embalagens"> Solicite um orçamento</a>
+              <a href="https://api.whatsapp.com/send?phone=5541996739627&text=Converse%20com%20a%20Reflexa%20Embalagens" rel="noreferrer" target="_blank"> Solicite um orçamento</a>
             </div>
           </Container>
         </Section>

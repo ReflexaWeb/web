@@ -16,7 +16,7 @@ export function Sobre() {
               Nossa ampla variedade de produtos nos permite atender diversos segmentos comerciais como panificadoras, confeitarias, restaurantes, mercados, açougues, lojas de conveniência, festas e domicílios residenciais.
               Com uma logística eficiente, proporcionamos aos clientes comodidade e praticidade em suas compras, com atendimento sugestivo, diversidade de produtos e entrega rápida.
               Além da loja física e atendimento por telefone, contamos com uma equipe de vendedores distribuídos pela cidade, que oferecem um acompanhamento pessoal nos estabelecimentos. Investimos constantemente nessa estrutura e estamos sempre de olho em lançamentos de novos produtos no mercado.
-              Focando sempre em trabalhar com qualidade, praticidade e seriedade, a Reflexa vem fidelizando clientes a mais de 20 anos.</Text>
+              Focando sempre em trabalhar com qualidade, praticidade e seriedade, a Reflexa vem fidelizando clientes a mais de 24 anos.</Text>
 
               <Endereco>
               <p><span>Endereço:</span> R. José Casagrande, 42 - Vista Alegre, Curitiba - PR</p>
