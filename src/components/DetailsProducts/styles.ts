@@ -27,6 +27,16 @@ export const Container = styled.div`
       width: 415px;
       object-fit: cover;
     }
+    @media(max-width: 600px) {
+      width: 100%;
+      height: 100%;
+      padding: 16px 11px 11px 15px;
+      margin-right:0;
+      img{
+        width:100%;
+        height: 100%;
+      }
+    }
   }
 
   .descDetailProduct{
@@ -36,6 +46,10 @@ export const Container = styled.div`
       font-weight: 600;
       line-height: 50px;
       margin-bottom: 45px;
+      @media(max-width: 600px) {
+        font-size: 30px;
+        line-height: 40px;
+      }
     }
 
     span{
@@ -63,5 +77,14 @@ export const Container = styled.div`
       text-decoration: none;
       text-transform: uppercase;
     }
+
+    @media(max-width: 600px) {
+      padding: 20px;
+    }
+  }
+
+  @media(max-width: 600px) {
+    flex-direction: column;
+    max-width:100%;
   }
 `

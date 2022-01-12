@@ -8,6 +8,8 @@ import ApplicationContext from "../../context/application";
 
 import { Section, Container, Title, Produtos } from "./styles";
 
+//import imgDefault from '../../assets/images/no-photo.jpeg';
+
 export function Products() {
   const { products, groups, group, fetchProducts, handleGroup, loadingProducts, page, totalPages, handlePage } = useContext(ApplicationContext);
 

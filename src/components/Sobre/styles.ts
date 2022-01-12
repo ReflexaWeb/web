@@ -9,6 +9,11 @@ export const Container = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 0;
+
+  @media(max-width: 600px) {
+    flex-direction: column;
+    max-width:100%;
+  }
 `
 
 export const About = styled.div`
@@ -29,6 +34,10 @@ export const Title = styled.h1`
     width: 237px;
     background-color: #ffb800;
   }
+
+  @media(max-width: 600px) {
+    text-align:center;
+  }
   
 `
 export const Text = styled.p`
@@ -36,10 +45,23 @@ export const Text = styled.p`
   font-weight: 300;
   line-height: 24px;
   text-align: left;
+
+  @media(max-width: 600px) {
+    text-align:center;
+    padding: 0 20px;
+  }
 `
 export const AboutImg = styled.div`
   display: flex;
   align-items: center;
+
+  @media(max-width: 600px) {
+    padding: 0 20px;
+    img{
+      max-width:100%;
+      object-fit:contain;
+    }
+  }
 `
 
 export const Endereco = styled.div`
@@ -50,6 +72,9 @@ export const Endereco = styled.div`
     span{
       font-weight:bold;
     }
+    @media(max-width: 600px) {
+     text-align:center;
+    }
   }
 
   a{
@@ -59,5 +84,9 @@ export const Endereco = styled.div`
     font-weight: bold;
     margin-top: 25px;
     text-decoration:none;
+
+    @media(max-width: 600px) {
+     text-align:center;
+    }
   }
 `

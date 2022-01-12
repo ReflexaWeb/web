@@ -10,6 +10,11 @@ export const Topo = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media(max-width: 600px) {
+    flex-direction: column;
+    max-width:100%;
+  }
 `;
 
 export const Redes = styled.div`
@@ -17,6 +22,9 @@ export const Redes = styled.div`
 
   > a{
     margin-left: 10px;
+  }
+  @media(max-width: 600px) {
+    padding: 20px 0;
   }
 `
 
@@ -50,6 +58,26 @@ export const Form = styled.form`
     height: 37px;
      
    } 
+
+   @media(max-width: 600px) {
+    flex-direction: column;
+    max-width:100%;
+    padding: 20px 0;
+
+    input{
+      display: block;
+      width: 300px;
+      height: 40px;
+      padding: 10px;
+      margin: 0 auto;
+    }
+
+    button{
+      display: block;
+      margin: 0 auto;
+      margin-top:25px;
+    }
+  }
 `
 
 export const Barra = styled.div`

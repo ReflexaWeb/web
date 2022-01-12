@@ -21,6 +21,15 @@ export const Container = styled.div`
     font-size: 18px;
     padding: 10px;
   }
+
+  @media(max-width: 600px) {
+    flex-direction: column;
+    max-width:100%;
+    select {
+      width:90%;
+      margin: 0 20px;
+    }
+  }
 `
 
 export const Title = styled.div`
@@ -28,20 +37,23 @@ export const Title = styled.div`
   display: block;
 
   h2{
-    color:#0063b4;
+  color:#0063b4;
   font-family: OpenSans;
   font-size: 44px;
   font-weight: 600;
   text-transform: uppercase;
   width: 100%;
 
-  &::after{
-    content: '';
-    display: block;
-    height: 3px;
-    width: 237px;
-    background-color: #ffb800;
-  }
+    &::after{
+      content: '';
+      display: block;
+      height: 3px;
+      width: 237px;
+      background-color: #ffb800;
+    }
+    @media(max-width: 600px) {
+      text-align:center;
+    }
   }
 `
 
@@ -94,6 +106,17 @@ export const Produtos = styled.div`
       height: 200px;
       width: 200px;
       object-fit: cover;
+    }
+
+    @media(max-width: 600px) {
+     max-width:100%;
+     margin:20px;
+      &:nth-child( 4n ){
+        margin-right: 20px;
+      }
+      img{
+        width:100% !important;
+      }
     }
   }
 `
