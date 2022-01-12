@@ -102,7 +102,7 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
         search: '',
         group: '',
         page: 1,
-        perPage: 5,
+        perPage: 15,
         totalPages: 1,
         products: [],
         groups: [],

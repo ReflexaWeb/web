@@ -57,10 +57,11 @@ export const Produtos = styled.div`
     max-width: 256px;
     padding: 30px 25px;
     margin-bottom: 60px;
+    margin-right: 25px;
     text-decoration: none;
 
-    & + a{
-      margin-left: 25px;
+    &:nth-child( 4n ){
+      margin-right: 0;
     }
 
     p{

@@ -20,7 +20,9 @@ export function Header() {
   return (
     <>
       <Topo>
+      <a href="/">
         <img src={logoImg} alt="Reflexa Comercial de Manufaturados" />
+      </a>
         <Form onSubmit={handleSubmit}>
           <input
             value={inputSearch}
@@ -31,8 +33,12 @@ export function Header() {
         </Form>
 
         <Redes>
+        <a href="https://pt-br.facebook.com/reflexaembalagens/">
           <img src={faceImg} alt="Facebook" />
+        </a>
+        <a href="https://www.instagram.com/reflexaembalagens/">
           <img src={instaImg} alt="Instagram" />
+        </a>
         </Redes>
       </Topo>
       <Barra />

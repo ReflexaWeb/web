@@ -32,9 +32,9 @@ export const Container = styled.div`
   .descDetailProduct{
     h2{
       color: #0063b4;
-      font-size: 44px;
+      font-size: 40px;
       font-weight: 600;
-      line-height: 44px;
+      line-height: 50px;
       margin-bottom: 45px;
     }
 

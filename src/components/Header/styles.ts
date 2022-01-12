@@ -15,8 +15,8 @@ export const Topo = styled.header`
 export const Redes = styled.div`
   display: flex;
 
-  > img{
-    margin-right: 10px;
+  > a{
+    margin-left: 10px;
   }
 `
 

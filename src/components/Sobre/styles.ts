@@ -41,3 +41,23 @@ export const AboutImg = styled.div`
   display: flex;
   align-items: center;
 `
+
+export const Endereco = styled.div`
+  display: block;
+  margin-top: 20px;
+
+  p{
+    span{
+      font-weight:bold;
+    }
+  }
+
+  a{
+    color:#505050;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 25px;
+    text-decoration:none;
+  }
+`
