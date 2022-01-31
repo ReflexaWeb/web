@@ -48,9 +48,8 @@ export function DetailsProducts() {
             <div className="descDetailProduct">
               <h2>{productDetail.name}</h2>
               <span><strong>Código:</strong> {productDetail.code}</span>
-              <span><strong>Unidades:</strong> {productDetail.unity}</span>
-              <span><strong>Referência:</strong> {productDetail.reference}</span>
-              <a href="https://api.whatsapp.com/send?phone=5541996739627&text=Converse%20com%20a%20Reflexa%20Embalagens" rel="noreferrer" target="_blank"> Solicite um orçamento</a>
+              <span><strong>{productDetail.unity}:</strong> {productDetail.reference}</span>
+              <a href="https://api.whatsapp.com/send?phone=5541996739627&text=Converse%20com%20a%20Reflexa%20Embalagens" rel="noreferrer" target="_blank"> Orçar Caixa</a>
             </div>
           </Container>
         </Section>
