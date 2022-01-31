@@ -17,6 +17,8 @@ interface Product {
   unity: string;
   reference: string;
   fraction: string;
+  unity_reference: string;
+  fraction_reference: string;
 }
 
 export function DetailsProducts() {
@@ -48,8 +50,12 @@ export function DetailsProducts() {
             <div className="descDetailProduct">
               <h2>{productDetail.name}</h2>
               <span><strong>Código:</strong> {productDetail.code}</span>
-              <span><strong>{productDetail.unity}:</strong> {productDetail.reference}</span>
-              <a href="https://api.whatsapp.com/send?phone=5541996739627&text=Converse%20com%20a%20Reflexa%20Embalagens" rel="noreferrer" target="_blank"> Orçar Caixa</a>
+              <span><strong>{productDetail.unity}:</strong> {productDetail.reference}
+              </span>
+              <span><strong>{productDetail.fraction_reference}:</strong> {productDetail.unity_reference}
+              </span>
+              <a href="https://api.whatsapp.com/send?phone=5541996739627&text=Reflexa%20Embalagens%20-%20Or%C3%A7ar%20Caixa" rel="noreferrer" target="_blank"> Orçar Caixa</a>
+              <a href="https://api.whatsapp.com/send?phone=5541996739627&text=Reflexa%20Embalagens%20-%20Or%C3%A7ar%20Pacote" rel="noreferrer" target="_blank"> Orçar Pacote</a>
             </div>
           </Container>
         </Section>

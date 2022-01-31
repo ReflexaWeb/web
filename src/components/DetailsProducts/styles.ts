@@ -72,7 +72,7 @@ export const Container = styled.div`
       padding-top: 12px;
       width: 315px;
       height: 44px;
-      margin-top: 55px;
+      margin-top: 25px;
       text-align: center;
       text-decoration: none;
       text-transform: uppercase;
