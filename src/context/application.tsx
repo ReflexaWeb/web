@@ -148,26 +148,19 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
             payload: true,
         });
 
-        const data = await api.get(`products${state.group ? `/products-by-group/${state.group}` : ''}`, {
+        const response = await api.get(`products`, {
             params: {
-                ...(state.group ? {} : {
-                    active: 1,
-                    name: state.search,
-                    page: state.page,
-                    per_page: state.perPage,
-                })
+                active: 1,
+                name: state.search,
+                page: state.page,
+                per_page: state.perPage,
+                group_code: state.group,
             },
-        }).then(response => {
-            if (state.group) {
-                return response;
-            }
-
-            return response.data;
         });
 
         dispatch({
             type: 'SET_PRODUCTS',
-            payload: data,
+            payload: response.data,
         });
 
         dispatch({
@@ -180,7 +173,6 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
         <ApplicationContext.Provider
             value={{
                 ...state,
-                products: state.group ? state.products?.filter((product: IProduct) => product.active) : state.products,
                 handleSearch,
                 handleGroup,
                 fetchProducts,
