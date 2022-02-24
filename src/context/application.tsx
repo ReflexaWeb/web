@@ -9,6 +9,11 @@ interface IProduct {
     product_url: string;
     code: number;
     group_code: string;
+    unity: string;
+    reference: string;
+    fraction: string;
+    unity_reference: string;
+    fraction_reference: string;
 }
 
 interface IGroup {
@@ -150,7 +155,7 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
 
         const response = await api.get(`products`, {
             params: {
-                active: 1,
+                active: true,
                 name: state.search,
                 page: state.page,
                 per_page: state.perPage,

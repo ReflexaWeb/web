@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from 'react-router-dom';
 
 import Loading from '../../components/FullLoader';
 import { Pagination } from "../Pagination";
@@ -44,13 +43,26 @@ export function Products() {
       <Container>
         <Produtos>
           {products.map(product => (
-            <Link key={product.id} to={`/produto/${product.code}`}>
+            <div className="card">
               <img src={product.product_url} alt={product.name} />
               <p>
                 {product.name}
               </p>
-              <span>Ver produto</span>
-            </Link>
+              <span><strong>Código:</strong> {product.code}</span>
+              {product.unity &&<span><strong>{product.unity} </strong> {product.reference}
+              </span>}
+              {product.fraction_reference &&<span><strong>{product.fraction_reference} </strong> {product.unity_reference}
+              </span>}
+              <a href={
+                `https://api.whatsapp.com/send?phone=5541996739627&text=Bem-vindo(a)%20a%20Reflexa%20Embalagens!
+                Gostaria de orçar o produto:
+                Código:${product.code}
+                Nome: ${product.name}
+                `
+              } rel="noreferrer" target="_blank"> Orçar Produto</a>
+              <span className="obs">* As especificações podem ser alteradas sem aviso prévio</span>
+              <span className="obs">** Imagem meramente ilustrativa</span>
+            </div>
           ))}
         </Produtos>
       </Container>
