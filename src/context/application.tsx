@@ -155,7 +155,7 @@ const ApplicationProvider: React.FC = ({ children }: any) => {
 
         const response = await api.get(`products`, {
             params: {
-                active: true,
+                //active: true,
                 name: state.search,
                 page: state.page,
                 per_page: state.perPage,

@@ -1,5 +1,5 @@
 import React from "react";
-import { BsWhatsapp, BsPhone, BsFillPinMapFill } from "react-icons/bs";
+import { BsWhatsapp, BsFillPinMapFill } from "react-icons/bs";
 
 
 import aboutImg from '../../assets/images/areflexa.png'
@@ -31,10 +31,7 @@ export function AvisoLanding() {
               </a>
             </Redes>
             <Telefones>
-              <a href="tel:4130788880">
-                <BsPhone /> (41) 3078-8880
-              </a>
-              <a href="https://api.whatsapp.com/send?phone=554199229316&text=Converse%20com%20a%20Reflexa%20Embalagens">
+              <a href="https://api.whatsapp.com/send?phone=5541996739627&text=Bem-vindo(a)%20a%20Reflexa%20Embalagens!">
                 <BsWhatsapp /> (41) 99673-9627
               </a>
             </Telefones>
